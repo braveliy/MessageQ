@@ -1,5 +1,5 @@
 # MessageQ
-Achieve MQ with C programm
+Achieve MQ API Function with C programm
 
 MQ的基本概念：
 1) 队列管理器

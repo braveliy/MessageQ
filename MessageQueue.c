@@ -17,9 +17,7 @@ static const char rcsid[] = "$Id: libmspapi30.c,v 1.2.2.2 2011/06/29 18:17:36 my
 /*           short *qid      - 邮箱号                     */
 /*                                              */
 /**********************************************************/
-int TSPMBReqattach(
-	short 	*qid
-)
+int TSPMBReqattach(short *qid)
 {
 	unsigned short iBusId;
 	unsigned short iGroupId;
@@ -78,8 +76,7 @@ int TSPMBdetach( )
 /*           short mtype    - 报文类型                    */
 /*                                              */
 /**********************************************************/
-int TSPMBread(char *msg_area, unsigned int  *msg_size, short *qid,
-short *mpriority, short *mclass, int *mtype)
+int TSPMBread(char *msg_area, unsigned int  *msg_size, short *qid, short *mpriority, short *mclass, int *mtype)
 {
 	char flag;
 	unsigned short ilClass, ilPriority;
@@ -91,8 +88,6 @@ short *mpriority, short *mclass, int *mtype)
 	long	Time;
 	long		mmSec;
 
-
-
 	ilMsglen = iMSGMAXLEN;
 	ilQid=*qid;
 	ilType = *mtype;
@@ -100,8 +95,7 @@ short *mpriority, short *mclass, int *mtype)
 	ilClass= *mclass;
 	flag=INSHM;
 	iSrcMbGrpId=atoi(getenv("MSP_GROUP_ID"));
-	ilRc =Msp_Get_Msg(msg_area,&ilMsglen,&ilQid,&iSrcMbGrpId,
-		&ilPriority,&ilClass,&ilType,&flag,UNRESERVE,-1);
+	ilRc =Msp_Get_Msg(msg_area,&ilMsglen,&ilQid,&iSrcMbGrpId,&ilPriority,&ilClass,&ilType,&flag,UNRESERVE,-1);
 
 	if(ilRc==ESBSUCCESS)
 	{
@@ -168,8 +162,7 @@ short *mpriority, short *mclass, int *mtype)
 /*	     short Flag     - 是否实时(REALTIME/NOREALTIME)*/
 /*                                              */
 /**********************************************************/
-int TSPMBwriteReal(char 	*msg_area,unsigned int 	msg_size,short 	qid,
-	short 	mpriority,short 	mclass,short 	mtype,short iFlag)
+int TSPMBwriteReal(char 	*msg_area,unsigned int 	msg_size,short 	qid, short 	mpriority,short 	mclass,short 	mtype,short iFlag)
 {
 	unsigned short iGroupId;
 	int ilRc;
