@@ -11,11 +11,11 @@ static const char rcsid[] = "$Id: libmspapi30.c,v 1.2.2.2 2011/06/29 18:17:36 my
 #include "msp.h"
 #include "tsp30.h"
 /**********************************************************/
-/*函数名：TSPMBReqattach()                                */
-/*功能：  按申请临时邮箱                                  */
-/*参数说明：                                              */
+/*Function：TSPMBReqattach()                                */
+/*Effect：  按申请临时邮箱                                  */
+/*Parameters：                                              */
 /*           short *qid      - 邮箱号                     */
-/*修改记录：                                              */
+/*                                              */
 /**********************************************************/
 int TSPMBReqattach(
 	short 	*qid
@@ -34,10 +34,10 @@ int TSPMBReqattach(
 		return ilRc;
 }
 /**********************************************************/
-/*函数名：TSPMBattach()                                    */
-/*功能：  侦测邮箱                                        */
+/*Function：TSPMBattach()                                    */
+/*Effect：  侦测邮箱                                        */
 /*           short qid      - 邮箱号                      */
-/*修改记录：                                              */
+/*                                              */
 /**********************************************************/
 int TSPMBattach(short qid)
 {
@@ -53,10 +53,10 @@ int TSPMBattach(short qid)
 		return ilRc;
 }
 /**********************************************************/
-/*函数名：TSPMBdetach()                                    */
-/*功能：  关闭邮箱                                        */
+/*Function：TSPMBdetach()                                    */
+/*Effect：  关闭邮箱                                        */
 /*                                                        */
-/*修改记录：                                              */
+/*                                              */
 /**********************************************************/
 int TSPMBdetach( )
 {
@@ -68,15 +68,15 @@ int TSPMBdetach( )
 		return ilRc;
 }
 /**********************************************************/
-/*函数名：TSPMBread()                                    */
-/*功能：  阻塞向邮箱接收数据                              */
-/*参数说明： char *msg_area - 报文                        */
+/*Function：TSPMBread()                                    */
+/*Effect：  阻塞向邮箱接收数据                              */
+/*Parameters： char *msg_area - 报文                        */
 /*           short msg_size - 报文长度                    */
 /*           short qid      - 邮箱号                      */
 /*           short mpriority- 优先级                      */
 /*           short mclass   - 报文类                      */
 /*           short mtype    - 报文类型                    */
-/*修改记录：                                              */
+/*                                              */
 /**********************************************************/
 int TSPMBread(char *msg_area, unsigned int  *msg_size, short *qid,
 short *mpriority, short *mclass, int *mtype)
@@ -157,16 +157,16 @@ short *mpriority, short *mclass, int *mtype)
 	}
 }
 /**********************************************************/
-/*函数名：TSPMBwriteReal()                                */
-/*功能：	  阻塞向邮箱发送数据                              */
-/*参数说明： char *msg_area - 报文                        */
+/*Function：TSPMBwriteReal()                                */
+/*Effect：	  阻塞向邮箱发送数据                              */
+/*Parameters： char *msg_area - 报文                        */
 /*           short msg_size - 报文长度                    */
 /*           short qid      - 邮箱号                      */
 /*           short mpriority- 优先级                      */
 /*           short mclass   - 报文类                      */
 /*           short mtype    - 报文类型                    */
 /*	     short Flag     - 是否实时(REALTIME/NOREALTIME)*/
-/*修改记录：                                              */
+/*                                              */
 /**********************************************************/
 int TSPMBwriteReal(char 	*msg_area,unsigned int 	msg_size,short 	qid,
 	short 	mpriority,short 	mclass,short 	mtype,short iFlag)
@@ -181,15 +181,15 @@ int TSPMBwriteReal(char 	*msg_area,unsigned int 	msg_size,short 	qid,
 		return ilRc;
 }
 /**********************************************************/
-/*函数名：TSPMBwrite()                                    */
-/*功能：  阻塞向邮箱发送数据                              */
-/*参数说明： char *msg_area - 报文                        */
+/*Function：TSPMBwrite()                                    */
+/*Effect：  阻塞向邮箱发送数据                              */
+/*Parameters： char *msg_area - 报文                        */
 /*           short msg_size - 报文长度                    */
 /*           short qid      - 邮箱号                      */
 /*           short mpriority- 优先级                      */
 /*           short mclass   - 报文类                      */
 /*           short mtype    - 报文类型                    */
-/*修改记录：                                              */
+/*                                              */
 /**********************************************************/
 int TSPMBwrite(char *msg_area, unsigned int msg_size, short qid,
 		short mpriority, short mclass, int mtype)
@@ -235,16 +235,16 @@ int TSPMBwrite(char *msg_area, unsigned int msg_size, short qid,
 
 
 /**********************************************************/
-/*函数名：TSPMBreadnw()                                    */
-/*功能：  阻塞向邮箱接收数据                              */
-/*参数说明： char *msg_area - 报文                        */
+/*Function：TSPMBreadnw()                                    */
+/*Effect：  阻塞向邮箱接收数据                              */
+/*Parameters： char *msg_area - 报文                        */
 /*           short msg_size - 报文长度                    */
 /*           short qid      - 邮箱号                      */
 /*           short mpriority- 优先级                      */
 /*           short mclass   - 报文类                      */
 /*           short mtype    - 报文类型                    */
 /*           short wtime    - 超时时间                    */
-/*修改记录：                                              */
+/*                                              */
 /**********************************************************/
 int TSPMBreadnw(char *msg_area, unsigned int *msg_size, short *qid,
 short *mpriority, short *mclass, int *mtype, short wtime)
