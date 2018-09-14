@@ -110,12 +110,12 @@ short *mpriority, short *mclass, int *mtype)
 		*mclass=ilClass;
 		*mtype=ilType;
 		*msg_size=ilMsglen;
-		/*modi by hqz 20090628*/
+		/*modi 20090628*/
 		plMsgHead=(MSGHEAD *)msg_area;
 
 
 		igTrnid	= plMsgHead->lTrnid;
-		igSwitch_mq = plMsgHead->switch_mq;/*add by hqz 2010-11-4*/
+		igSwitch_mq = plMsgHead->switch_mq;/*add  2010-11-4*/
 		/* 2010-04-23 mymtom 对非交易报文，日志需要分离 */
 		/*
 		if(plMsgHead->iLogFlag == SEPFILE)
@@ -133,8 +133,8 @@ short *mpriority, short *mclass, int *mtype)
 			igLogLevel = plMsgHead->iLogLevel;
 			strcpy(sgDebugFile,plMsgHead->sLogFileName);
 			/*
-			esbDebug("%s", "");
-			esbDebug("begin module debug file :[%s]",sgDebugFile_src);
+			printf("%s", "");
+			printf("begin module debug file :[%s]",sgDebugFile_src);
 			*/
 		}
 		if(plMsgHead->iTraceFlag == GETMODCOST)
@@ -143,10 +143,10 @@ short *mpriority, short *mclass, int *mtype)
 			plMsgHead->iInModuleTime = Time;
 			plMsgHead->iInModulemmTime = mmSec;
 		}
-		/*modi by hqz 20090628*/
+		/*modi  20090628*/
 		if(igLogLevel >= 3 )
 		{
-			esbDebug("Read  :%3d->%3d:pid[%5d] Pri[%4d] Class[%4d] Type[%d] Msglen[%5d]\n",
+			printf("Read  :%3d->%3d:pid[%5d] Pri[%4d] Class[%4d] Type[%d] Msglen[%5d]\n",
 				ilQid,plMsgHead->iDestMQ,getpid(),ilPriority,ilClass,ilType,ilMsglen);
 		}
 		return 0;
@@ -205,13 +205,13 @@ int TSPMBwrite(char *msg_area, unsigned int msg_size, short qid,
 	plMsgHead=(MSGHEAD *)msg_area;
 
 	if(igLogLevel >= 3)
-		esbDebug("Before Msp_Put_Msg MQ[%d]",qid);
+		printf("Before Msp_Put_Msg MQ[%d]",qid);
 	ilRc =Msp_Put_Msg(msg_area,msg_size,TSPREALTIME,qid,iGroupId,mpriority,mclass,mtype,INSHM);
 	if(ilRc==MSPSUCCESS)
 	{
 		if(igLogLevel >= 3)
 		{
-		  esbDebug("Write :[%d]->[%d]:pid[%d] Pri[%d] Class[%d] Type[%d] Msglen[%d]\n",plMsgHead->iSrcMQ,qid,getpid(),mpriority,mclass,mtype,msg_size);
+		  printf("Write :[%d]->[%d]:pid[%d] Pri[%d] Class[%d] Type[%d] Msglen[%d]\n",plMsgHead->iSrcMQ,qid,getpid(),mpriority,mclass,mtype,msg_size);
 		}
 		if(plMsgHead->iTraceFlag == GETMODCOST)
 		{
@@ -223,7 +223,7 @@ int TSPMBwrite(char *msg_area, unsigned int msg_size, short qid,
 			ilRc =Msp_Put_Msg(msg_area,iMSGHEADLEN,TSPREALTIME,iMBMONSYS,iGroupId,mpriority,mclass,mtype,INSHM);
 			if(ilRc!=MSPSUCCESS)
 			{
-				esbDebug("SrcModeMQ[%d] Write iMBMONSYS FAIL",plMsgHead->iSrcMQ);
+				printf("SrcModeMQ[%d] Write iMBMONSYS FAIL",plMsgHead->iSrcMQ);
 			}
 			plMsgHead->iMsgClass = ilMsgClass;
 		}
@@ -275,9 +275,9 @@ short *mpriority, short *mclass, int *mtype, short wtime)
 		*mclass=ilClass;
 		*mtype=ilType;
 		*msg_size=ilMsglen;
-	/*modi by hqz 20090628*/
+	/*modi  20090628*/
 		plMsgHead=(MSGHEAD *)msg_area;
-		igSwitch_mq = plMsgHead->switch_mq;/*add by hqz 2010-11-4*/
+		igSwitch_mq = plMsgHead->switch_mq;/*add  2010-11-4*/
 		igTrnid = plMsgHead->lTrnid;
 		if(plMsgHead->iLogFlag == SEPFILE)
 		{
@@ -288,8 +288,8 @@ short *mpriority, short *mclass, int *mtype, short wtime)
 			igLogLevel = plMsgHead->iLogLevel;
 			strcpy(sgDebugFile,plMsgHead->sLogFileName);
 			/*
-			esbDebug("%s", "");
-			esbDebug("begin module debug file :[%s]",sgDebugFile_src);
+			printf("%s", "");
+			printf("begin module debug file :[%s]",sgDebugFile_src);
 			*/
 		}
 			if(plMsgHead->iTraceFlag == GETMODCOST)
@@ -297,10 +297,10 @@ short *mpriority, short *mclass, int *mtype, short wtime)
 						time(&Time);
 						plMsgHead->iInModuleTime = Time;
 			}
-		/*modi by hqz 20090628*/
+		/*modi  20090628*/
 		if(igLogLevel >= 3)
 		{
-			esbDebug("Readnw:%3d->%3d:pid[%5d] Pri[%4d] Class[%4d] Type[%d] Msglen[%5d]\n",plMsgHead->iDestMQ,*qid,getpid(),*mpriority,*mclass,*mtype,*msg_size,wtime);
+			printf("Readnw:%3d->%3d:pid[%5d] Pri[%4d] Class[%4d] Type[%d] Msglen[%5d]\n",plMsgHead->iDestMQ,*qid,getpid(),*mpriority,*mclass,*mtype,*msg_size,wtime);
 		}
 		return SUCCESS;
 	}
